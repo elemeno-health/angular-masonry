@@ -50,6 +50,8 @@
             var method = args[0];
             args = args.slice(1);
 
+            console.log('calling masonry', args)
+
             self.masonry[method].apply(self.masonry, args);
           });
           schedule = [];
@@ -82,6 +84,8 @@
           // that I couldn't fix. If you know how to dynamically add a
           // callback so one could say <masonry loaded="callback($element)">
           // please submit a pull request!
+          console.log('masonry scheduled: _layout')
+
           self.scheduleMasonryOnce('layout');
         }
 
@@ -106,6 +110,8 @@
 
         delete bricks[id];
         self.masonry.remove(element);
+        console.log('masonry scheduled: removeBrick')
+
         this.scheduleMasonryOnce('layout');
       };
 
@@ -125,7 +131,6 @@
         self.masonry.reloadItems();
         $scope.$emit('masonry.reloaded');
       };
-
 
     }]).directive('masonry', function masonryDirective() {
       return {
@@ -170,7 +175,6 @@
               });
             }
 
-            scope.$emit('masonry.created', element);
             scope.$on('$destroy', ctrl.destroy);
           }
         }
@@ -192,14 +196,16 @@
             });
 
             scope.$on('masonry.reload', function () {
+              console.log('masonry scheduled: on masonry.reload')
+
               ctrl.scheduleMasonryOnce('reloadItems');
               ctrl.scheduleMasonryOnce('layout');
             });
 
             scope.$watch('$index', function () {
-              console.log('masonry: $index changed')
-
               if (index !== undefined && index !== scope.$index) {
+                console.log('masonry scheduled: on $index watch')
+
                 ctrl.scheduleMasonryOnce('reloadItems');
                 ctrl.scheduleMasonryOnce('layout');
               }
