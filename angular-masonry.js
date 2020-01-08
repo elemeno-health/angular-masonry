@@ -120,7 +120,7 @@
       };
 
       this.reload = function reload() {
-        self.masonry.reload();
+        self.masonry.reloadItems();
         $scope.$emit('masonry.reloaded');
       };
 
