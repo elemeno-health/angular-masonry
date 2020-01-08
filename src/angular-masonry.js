@@ -50,7 +50,7 @@
             var method = args[0];
             args = args.slice(1);
 
-            console.log('calling masonry', args)
+            console.log('calling masonry', method, args)
 
             self.masonry[method].apply(self.masonry, args);
           });
