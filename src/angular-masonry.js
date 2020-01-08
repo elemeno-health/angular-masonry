@@ -9,6 +9,8 @@
 (function () {
   'use strict';
 
+  const Masonry = require('masonry-layout')
+
   angular.module('wu.masonry', [])
     .controller('MasonryCtrl', function controller($scope, $element, $timeout) {
       var bricks = {};
@@ -195,6 +197,8 @@
             });
 
             scope.$watch('$index', function () {
+              console.log('masonry: $index changed')
+
               if (index !== undefined && index !== scope.$index) {
                 ctrl.scheduleMasonryOnce('reloadItems');
                 ctrl.scheduleMasonryOnce('layout');
