@@ -29,7 +29,6 @@
   "dependencies": {
     "angular": "^1.6.0",
     "imagesloaded": "^4.1.0",
-    "jquery-bridget": "^2.0.0",
     "masonry-layout": "^4.0.0"
   }
 }
