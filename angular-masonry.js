@@ -9,7 +9,7 @@
 (function () {
   'use strict';
 
-  const Masonry = require('masonry-layout')
+  var Masonry = require('masonry-layout')
 
   angular.module('wu.masonry', [])
     .controller('MasonryCtrl', ['$scope', '$element', '$timeout', function controller($scope, $element, $timeout) {
